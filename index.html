@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<head>
+   <meta charset="utf-8" />
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <title>Cipherama</title>
+   <meta name="description" content="" />
+   <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <link rel="stylesheet" href="style.css">
+   <script>
+      function generate(){
+      const username = document.getElementById('username').value;
+      const date = new Date();
+      if (username.length < 1) {
+      alert('Please enter username first!');
+      }
+      else {
+      let unique = create_UUID();
+      document.getElementById('usernameOutput').innerHTML = "Username of the request : " + username;
+      document.getElementById('uniqueidOutput').innerHTML = "Unique ID for the request : " + unique;
+      document.getElementById('dateoutput').innerHTML = "Date and time of the request : " + date.toLocaleString();
+      document.getElementById('username').value = '';
+      }
+      }
+      
+      function create_UUID(){
+      var dt = new Date().getTime();
+      var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+          var r = (dt + Math.random()*16)%16 | 0;
+          dt = Math.floor(dt/16);
+          return (c=='x' ? r :(r&0x3|0x8)).toString(16);
+      });
+      return uuid;
+      }
+   </script>
+</head>
+<body>
+   <meta charset="utf-8">
+   <title>Avtaar Assignment 1</title>
+   <input type="text" name="username" id="username" placeholder="Enter a username"/>
+   <button onclick="generate();">Generate</button>
+   <p id="usernameOutput"></p>
+   <p id="uniqueidOutput"></p>
+   <p id="dateoutput"></p>
+   <body>
+</body>
